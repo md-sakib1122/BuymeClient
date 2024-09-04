@@ -14,7 +14,7 @@ function header() {
                 </div>
                 
                 <div className=' flex lg:w-[367px] justify-between h-full items-center ml-auto lg:ml-0 '>
-                    <button className=' hidden lg:inline-block hover:border-b-2'>Home</button>
+                    <button className=' hidden lg:inline-block hover:border-b-2'>Login</button>
                 
                     <button className='hidden lg:inline-block hover:border-b-2'>contact</button>
                 
@@ -22,8 +22,8 @@ function header() {
                 
                     <button className=' hover:border-b-2'>Signup</button>
                 </div>
-                <div className='flex gap-[24px] items-center'>
-                    <div className='   h-[38px] w-[243px]  bg-slate-100 lg:flex items-center pr-[12px] justify-between hidden'>
+                <div className='flex gap-[24px] items-center ml-4'>
+                    <div className='  h-[38px] w-[243px]  bg-slate-100 lg:flex items-center pr-[12px] justify-between hidden'>
                         <input type="text" className=' h-full pl-[20px] w-full text-sm outline-none bg-slate-100 ' placeholder='what are you looking for?' />
                         <button className='text-xl'><IoIosSearch /></button>
                     </div>
