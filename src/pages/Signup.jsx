@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import signup  from '../assest/signup.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
 function Signup() {
@@ -10,6 +10,8 @@ function Signup() {
      name: '',
      conformPassword: '',
    });
+
+   const navigate = useNavigate();
 
    //passsword match checking
    const [match, setMatch] = useState(false);
@@ -41,8 +43,11 @@ function Signup() {
 
           const data = await dataAPi.json();
             console.log(data);
-            if(data.success)
-            toast.success(data.message); 
+            if(data.success){
+               toast.success(data.message); 
+                navigate('/login');
+            }
+           
           if(data.error)
              throw new Error(data.message);
         

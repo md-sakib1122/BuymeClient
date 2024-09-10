@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import signup  from '../assest/signup.png';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import summaryApi from '../common';
+import { toast } from 'react-toastify';
 function Login() {
    const [val, setVal] = useState({
      email: '',
      password: '',
    });
+
+   const navigate = useNavigate();
 
    const handleCHange =(e)=>{
      const {name, value} =e.target;
@@ -16,9 +19,26 @@ function Login() {
  
    }
 
-   const handleSubmit= (e)=>{
+   const handleSubmit= async (e)=>{
     e.preventDefault();
-    console.log(val)
+    const dataApi = await fetch(summaryApi.login.url,{
+      credentials:'include',
+      method: summaryApi.login.method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(val)
+    });
+
+    const data = await dataApi.json();
+
+    if(data.success) {
+      toast.success(data.message);
+      navigate('/');
+    }
+    if(data.error) {
+      toast.error(data.message);
+    }
  }
 
   return (
