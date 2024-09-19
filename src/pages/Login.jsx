@@ -3,6 +3,8 @@ import signup  from '../assest/signup.png';
 import { Link, useNavigate } from 'react-router-dom';
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import contex from '../contex';
 function Login() {
    const [val, setVal] = useState({
      email: '',
@@ -19,6 +21,8 @@ function Login() {
  
    }
 
+    const {fetchUserDetails} = useContext(contex);
+
    const handleSubmit= async (e)=>{
     e.preventDefault();
     const dataApi = await fetch(summaryApi.login.url,{
@@ -34,6 +38,7 @@ function Login() {
 
     if(data.success) {
       toast.success(data.message);
+      fetchUserDetails();
       navigate('/');
     }
     if(data.error) {

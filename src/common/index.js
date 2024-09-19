@@ -7,6 +7,10 @@ const summaryApi = {
     login : {
         url: `${backendDomain}/api/login`,
         method: 'post',
+    },
+    userDetails : {
+        url: `${backendDomain}/api/user-details`,
+        method: 'get',
     }
 
 }

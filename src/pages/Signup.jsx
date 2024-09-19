@@ -3,13 +3,29 @@ import signup  from '../assest/signup.png';
 import { Link, useNavigate } from 'react-router-dom';
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
+import { ImUser } from "react-icons/im";
+import uploadImage from '../helpers/uploadImage';
+
 function Signup() {
    const [val, setVal] = useState({
      email: '',
      password: '',
      name: '',
      conformPassword: '',
+     proPic:'',
    });
+
+   const [proPic, setProPic] = useState("");
+
+   const handleProPic = async (e) => {   // handle profile picture  
+      const cloudinaryImageFile = await uploadImage(e.target.files[0]);
+      
+       setVal((val)=>{
+         return {...val, proPic: cloudinaryImageFile.url }
+       });
+
+    
+   }
 
    const navigate = useNavigate();
 
@@ -30,7 +46,8 @@ function Signup() {
            const payload = {
               password: val.password,
               email: val.email,
-              name: val.name
+              name: val.name,
+              proPic: val.proPic
            }
           try{
           const dataAPi = await fetch(summaryApi.signUp.url,{
@@ -60,8 +77,9 @@ function Signup() {
     else {
       setMatch(true);
     }
-
-
+    
+    console.log(val);
+   
    }
 
   return (
@@ -73,8 +91,17 @@ function Signup() {
              </div>
 
               <form  onSubmit={handleSubmit} className=' sm:w-[500px]'>
-                 <h1 className=' text-2xl mb-1 sm:text-4xl font-bold sm:mb-3'>Signup And Explore more</h1>
-                 <h3 className=' text-xl mb-[20px]'>Enter Your Details Below</h3>
+                 
+                 <div className='flex justify-center w-full mb-1'>
+                       <div className=' flex items-center justify-center relative w-14 h-14 text-6xl text-white bg-slate-400 rounded-full cursor-pointer '>
+                          <input onChange={handleProPic}  className='absolute opacity-0 w-full h-full ' type="file" />
+                         {
+                          val.proPic.length > 0 ? ( <img src={val.proPic} alt="Profile" className="w-full h-full rounded-full object-cover" />)
+                          : <ImUser />
+                         } 
+                       </div>
+                 </div>
+                 <h1 className='text-xl  mb-1 sm:text-2xl font-bold sm:mb-3'>Signup And Explore more</h1>
                  <input onChange={handleCHange} value={val.name} name='name' className=' mb-[10px] border-b-2 w-full py-2 outline-none' type="text" placeholder='Enter your name' />
                  <input onChange={handleCHange} value={val.email} name='email' className=' border-b-2 w-full py-2 outline-none' type="text" placeholder='Enter your Email address' />
                  <input onChange={handleCHange} name='password' value={val.password} className=' border-b-2 w-full my-[10px] py-2 outline-none' type="text" placeholder='Enter your password' />
