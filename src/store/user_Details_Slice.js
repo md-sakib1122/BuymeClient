@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 0,
+  user: null,
 }
 
 export const counterSlice = createSlice({
@@ -10,7 +10,7 @@ export const counterSlice = createSlice({
   reducers: {
     setUserDetails: (state,action) => {
       
-      console.log('redux ',action.payload);
+      state.user = action.payload;
     },
    
   },

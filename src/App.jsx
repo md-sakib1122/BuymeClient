@@ -28,15 +28,12 @@ function App() {
 
            })
 
-           const data = await response.json();
+           const dataApi = await response.json();
 
-           if(data.success){
-             dispatch(setUserDetails(data));
-             
+           if(dataApi.success){
+             dispatch(setUserDetails(dataApi.data));
+            
            }
-
-           console.log('User Details: ', data) 
-
 
          } catch (error) {
             console.error('Error fetching user details: ', error)

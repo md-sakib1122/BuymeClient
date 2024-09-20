@@ -90,11 +90,11 @@ function Signup() {
                  <img className=" lg:block sm:hidden  h-full w-full " src={signup} alt="" />
              </div>
 
-              <form  onSubmit={handleSubmit} className=' sm:w-[500px]'>
+              <form  onSubmit={handleSubmit} className=' sm:w-[500px] '>
                  
-                 <div className='flex justify-center w-full mb-1'>
+                 <div className='flex justify-center w-full mb-1 '>
                        <div className=' flex items-center justify-center relative w-14 h-14 text-6xl text-white bg-slate-400 rounded-full cursor-pointer '>
-                          <input onChange={handleProPic}  className='absolute opacity-0 w-full h-full ' type="file" />
+                          <input onChange={handleProPic}  className=' absolute opacity-0 w-full h-full ' type="file" />
                          {
                           val.proPic.length > 0 ? ( <img src={val.proPic} alt="Profile" className="w-full h-full rounded-full object-cover" />)
                           : <ImUser />

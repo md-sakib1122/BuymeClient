@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import logo from '../assest/logo.jpg';
+import { useSelector, useDispatch } from 'react-redux'
+import UserModal from './userModal';
 
 function header() {
 
-
+    const user = useSelector(state=>state.user.user);
+    console.log("contex user",user)
+    const [toggoleModal, setToggoleModal] = useState(false);
   return (
      <header className=' h-16 border-b px-4 fixed z-50  w-full bg-white top-0'>
            <div className=' container mx-auto flex justify-between items-center h-full'>
@@ -29,8 +33,20 @@ function header() {
                         <button className='text-2xl '><IoIosSearch /></button>
                     </div>
                 </div>
-                <div className='flex gap-[24px] items-center ml-4'>
-                    <Link to = {"/login"}  className=' hover:border-b-2'>Login</Link>
+                <div className='flex gap-[24px] items-center ml-4 '>
+                    {
+                       user?.proPic ? ( 
+                    <div className=' relative'>
+                        <div onClick={()=>setToggoleModal((toggoleModal)=>!toggoleModal)} className=' border-yellow-500 flex justify-center items-center border-2 rounded-full '>
+                            <img className=' h-8 w-8 cursor-pointer rounded-full object-cover' src={user.proPic} alt="" />
+                        </div> 
+                        {
+                         toggoleModal? <UserModal user={user} /> : " "  //user modal setUp
+                        }
+                    </div>
+                    ):(<Link to = {"/login"}  className=' hover:border-b-2'>Login</Link>)
+                    }
+                    
                     <span className=' text-3xl'>
                         <CiHeart />
                     </span>
