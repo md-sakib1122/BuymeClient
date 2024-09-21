@@ -9,7 +9,8 @@ import {
    import Login from "../pages/Login";
    import Signup from "../pages/Signup";
    import AdminPanel from "../pages/AdminPanel";
-
+   import AdminHome from "../adminpanel/AdminHome";
+   import AdminTest from "../adminpanel/AdminTest";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -27,10 +28,23 @@ import {
            path:"signup",
            element: <Signup/>
          },
+
          {
           path:'admin-panel',
-          element:<AdminPanel/>
+          element:<AdminPanel/>,
+          children: [
+             {
+              path:'',
+              element: <AdminHome/>
+             },
+             {
+              path:'test',
+              element: <AdminTest/>
+             }
+          ]
          }
+
+
       ]
     },
     

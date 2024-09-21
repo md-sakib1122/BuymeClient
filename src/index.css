@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .grid-header {
+        grid-area: header;
+    }
+    .grid-sidebar {
+        grid-area: sidebar;
+    }
+    .grid-home {
+        grid-area: home;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 260px 1fr 1fr 1fr;
+        grid-template-rows: 0.2fr 3fr;
+        height: 100vh;
+    }
+
+    .boxShadow {
+        box-shadow: 4px 4px 6px rgba(0,0,0,0.7);
+    }
+  }
