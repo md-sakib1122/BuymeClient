@@ -7,7 +7,7 @@ import { IoIosNotifications } from "react-icons/io";
 function AdminHome() {
 
   return (
-    <div className='bg bg-white col-span-3 p-4'>
+    <div className=' bg-white col-span-3 p-4'>
         <h1 className=' pb-6 font-bold'>Dashboard</h1>
       
          <div className=' w-full text-white grid  lg:grid-cols-4  gap-3 md:grid-cols-2 '>

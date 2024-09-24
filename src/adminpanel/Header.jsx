@@ -5,8 +5,8 @@ from 'react-icons/bs';
 function Header({ sidebar, setSidebar }) {
   
   return (
-    <div className='col-span-3 flex justify-between items-center px-4 bg-white h-14'>
-       <div onClick={()=>setSidebar((sidebar)=>!sidebar)} className=' visible lg:hidden'>
+    <div className='col-span-3 flex justify-between items-center px-4 bg-white h-14 '>
+       <div  onClick={()=>setSidebar((sidebar)=>!sidebar)} className=' visible lg:hidden cursor-pointer'>
           <BsJustify/>
         </div>
         <div className=' cursor-pointer' >

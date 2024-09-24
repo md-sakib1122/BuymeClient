@@ -11,6 +11,7 @@ import {
    import AdminPanel from "../pages/AdminPanel";
    import AdminHome from "../adminpanel/AdminHome";
    import AdminTest from "../adminpanel/AdminTest";
+   import Users from "../adminpanel/Users";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -40,6 +41,10 @@ import {
              {
               path:'test',
               element: <AdminTest/>
+             },
+             {
+              path:'users',
+              element: <Users/>
              }
           ]
          }

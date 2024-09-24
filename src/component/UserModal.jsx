@@ -40,7 +40,7 @@ import { setUserDetails } from '../store/user_Details_Slice';
                 </div>
                 <div className=''>
                    <h2 className=' font-bold'>{user?.name}</h2>
-                   <h3 className=' -mt-1 text-slate-500'>Admin</h3>
+                   <h3 className=' -mt-1 text-slate-500'>{user.role}</h3>
                 </div>
             </div>
 

@@ -50,7 +50,7 @@ function App() {
            <contex.Provider value={{ fetchUserDetails }}>
         
                <ToastContainer />
-               <div className=' pt-16'>
+               <div className=' pt-16 h-screen'>
                   <Header/>
                         <Outlet/>
                   <Footer/>

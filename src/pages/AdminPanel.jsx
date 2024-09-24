@@ -8,7 +8,7 @@ function AdminPanel() {
 
   return (
     
-    <div className=' lg:grid-container gap-[2px] bg-slate-200 md:grid-cols-1 sm:grid-cols-1 relative min-h-screen  '>
+    <div className=' lg:grid-container gap-[2px] bg-slate-200 md:grid-cols-1 sm:grid-cols-1 relative h-full '>
          <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
          <Header sidebar={sidebar} setSidebar={setSidebar} />
         <Outlet/>
