@@ -23,6 +23,10 @@ const summaryApi = {
     updateUserRole : {
         url : `${backendDomain}/api/user-role-update`,
         method: 'post',
+    },
+    uploadProduct : {
+        url : `${backendDomain}/api/upload-product`,
+        method: 'post',
     }
     
 

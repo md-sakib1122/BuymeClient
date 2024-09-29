@@ -12,6 +12,7 @@ import {
    import AdminHome from "../adminpanel/AdminHome";
    import AdminTest from "../adminpanel/AdminTest";
    import Users from "../adminpanel/Users";
+   import Allproducts from "../adminpanel/Allproducts";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -45,6 +46,10 @@ import {
              {
               path:'users',
               element: <Users/>
+             },
+             {
+              path: 'all-products',
+              element : <Allproducts/>
              }
           ]
          }

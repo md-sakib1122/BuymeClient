@@ -32,7 +32,7 @@ function Sidebar({ sidebar, setSidebar }) {
           <h2>Dashboard</h2>
         </Link>
 
-        <Link to ={"#"} className=' my-4 hover:bg-slate-200 cursor-pointer p-1 px-3 flex items-center gap-2'>
+        <Link to ={'all-products'} className=' my-4 hover:bg-slate-200 cursor-pointer p-1 px-3 flex items-center gap-2'>
           <span className=' text-2xl'><MdDelete /></span>
           <h2>Products</h2>
         </Link>

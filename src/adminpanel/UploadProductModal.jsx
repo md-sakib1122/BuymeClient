@@ -1,0 +1,177 @@
+import React, { useState } from 'react';
+import {toggle_upload_modal} from'../store/products_slice';
+import { useDispatch } from 'react-redux';
+import { FaUpload } from "react-icons/fa6";
+import { ImCross } from "react-icons/im";
+import uploadImage from '../helpers/uploadImage';
+import { MdDelete } from "react-icons/md";
+import productCategory from "../helpers/productCategory";
+import summaryApi from '../common';
+
+
+function UploadProductModal() {
+
+   const dispatch = useDispatch();
+   const [product, setProduct] = useState({
+      productName: '',
+      brandName: '',
+      category: '',
+      images: [],
+      sellingPrice : '',
+      buyingPrice :'',
+      description: ''
+   });
+
+   const handleChange = (e) => {
+      const {name , value} = e.target;
+      setProduct({...product, [name]: value });
+   }
+
+   const handleImage = async (e) => {
+      const value = e.target.files[0];
+      const image = await uploadImage(value);
+    
+      setProduct((product)=>{return {...product, images: [...product.images, image.url] }});
+   }
+
+
+   const handleDeletImg = (index) => {
+        const images  = product.images.filter((img , ind)=>{
+          if(index !== ind) return true;
+          else return false;
+        });
+
+        setProduct((product)=>{return {...product, images }});
+   }
+
+    const handleUpload = async (e) => {
+        const response = await fetch(summaryApi.uploadProduct.url,{
+          method: summaryApi.uploadProduct.method,
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({...product }),
+        });
+
+       const dataResponse = await response.json();
+       if(dataResponse.success) {
+         console.log(dataResponse.message);
+       }
+       if(dataResponse.error) {
+         console.log(dataResponse.message);
+       }
+    }
+
+
+  return (
+    <div className=' absolute h-full w-full  bg-black  bg-opacity-15 flex justify-center items-center'>
+        <div className=' w-1/2 h-[450px] bg-white mb-12  p-2  overflow-y-scroll'> 
+            <div className='flex justify-between mb-5'>
+              <h1 className=' font-bold'>Upload Product</h1>
+              <button className=' hover:bg-red-500 hover:text-white p-1 rounded-full' onClick={()=>dispatch(toggle_upload_modal(false))}>
+                 <ImCross />
+              </button>
+            </div>
+
+            < div className=' flex flex-col mb-4'>
+               <label htmlFor="ProductName">Product Name</label>
+               <input className=' h-9 px-2 outline-none w-full bg-slate-200' 
+                  placeholder='enter product name' 
+                  type="text" 
+                  name= 'productName'
+                  onChange={handleChange}
+                  value={product.productName}
+               />
+            </div>
+
+            < div className=' flex flex-col mb-4'>
+               <label htmlFor="ProductName">Brand Name</label>
+               <input className=' h-9 px-2 outline-none w-full bg-slate-200' 
+                  placeholder='enter product name' 
+                  type="text" 
+                  name = 'brandName'
+                  onChange={handleChange}
+                  value={product.brandName}
+               />
+            </div>
+
+            <div className=' flex flex-col mb-4'>
+               <label htmlFor="category"> category</label>
+               <select className=' bg bg-slate-200 h-9 outline-none ' name="category" id=""  onChange={handleChange}>
+                  <option value="Airpods">Select</option>
+                  {
+                     productCategory.map((item, index)=>(
+                        <option key={index} value={item.value}>{item.label}</option>
+                     ))
+                  }
+               </select>
+            </div>
+
+            <div className=' flex flex-col '>
+               <label htmlFor="ProductImage">Product Image</label>
+               <div className=' h-28 w-full bg-slate-200 relative'>
+                  <div className=' flex flex-col justify-center items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-xl text-slate-800'>
+                     <FaUpload />
+                     <p>Upload Products Image</p>
+                  </div>
+                  <input className=' opacity-0 bg-opacity-50  px-2 outline-none  top-0 left-0 bottom-0 right-0 bg-slate-200 absolute' 
+                      type="file"
+                      name = "productImage"
+                      onChange={handleImage}
+                   /> 
+               </div>
+            </div>
+            <div className=' flex gap-2 relative mt-1 mb-2'>
+               {
+                  product.images.length > 0 ? (
+                     product.images.map((images, index)=>(
+                        <div key={index} className=' relative bg-slate-200'>
+                          <img className=' h-20 w-20 object-scale-down' key={index} src={images} alt="products" />
+                          <button className=' absolute bottom-1 right-1 bg-red-600 p-1 text-white rounded-full' onClick={()=>handleDeletImg(index)}><MdDelete /></button>
+                        </div>
+                     ))
+                  ): (<p className=' text-red-600 '>*please upload product</p>)
+               }
+               
+            </div>
+
+            < div className=' flex flex-col mb-4'>
+               <label htmlFor="ProductName">Buying Price</label>
+               <input className=' h-9 px-2 outline-none w-full bg-slate-200' 
+                  placeholder='Buiying Price...' 
+                  type="number" 
+                  name = 'buyingPrice'
+                  onChange={handleChange}
+                  value={product.buyingPrice}
+               />
+            </div>
+
+            < div className=' flex flex-col mb-4'>
+               <label htmlFor="ProductName">Selling Price</label>
+               <input className=' h-9 px-2 outline-none w-full bg-slate-200' 
+                  placeholder='Selling Price...' 
+                  type="number" 
+                  name = 'sellingPrice'
+                  onChange={handleChange}
+                  value={product.sellingPrice}
+               />
+            </div>
+
+            <div className=' flex flex-col'>
+               <label htmlFor="description">Description</label>
+               <textarea className=' border outline-none' value={product.description} rows={5} cols={20} onChange={handleChange}  name="description" id="">
+                  Place your product description here...
+               </textarea>
+
+            </div>
+            
+            <div className=' mt-4'>
+               <button onClick={handleUpload}  className=' w-full h-8 bg-red-600 text-white hover:bg-red-700'> Upload Product </button>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default UploadProductModal
