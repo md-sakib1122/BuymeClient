@@ -27,6 +27,14 @@ const summaryApi = {
     uploadProduct : {
         url : `${backendDomain}/api/upload-product`,
         method: 'post',
+    },
+    fetchAllProducts : {
+        url : `${backendDomain}/api/all-product`,
+        method: 'get',
+    },
+    updateProduct : {
+        url : `${backendDomain}/api/update-product`,
+        method: 'put',
     }
     
 

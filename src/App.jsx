@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import contex from './contex'
 import summaryApi from './common'
+import {productEditModal} from './contex/index'
 
 //REDUC TOLKIT
 import { setUserDetails } from './store/user_Details_Slice'
@@ -44,13 +45,13 @@ function App() {
       fetchUserDetails();
     },[])
 
-    
+    const  editModal  = productEditModal();
      return (
         <>
-           <contex.Provider value={{ fetchUserDetails }}>
+           <contex.Provider value={{ fetchUserDetails ,editModal}}>
         
                <ToastContainer />
-               <div className=' pt-16 h-screen'>
+               <div className=' pt-12 h-screen'>
                   <Header/>
                         <Outlet/>
                   <Footer/>

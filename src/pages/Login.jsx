@@ -49,12 +49,12 @@ function Login() {
   return (
       <div className=' sm:px-[66px] px-3 w-full h-full my-4'>
 
-         <div className=' h-full w-full flex sm:justify-between items-center '>
-             <div className='h-full w-1/2 bg-red-400 sm:block hidden '>
+         <div className=' h-full w-full flex sm:justify-between lg:items-center '>
+             <div className='h-full w-1/2  hidden  md:hidden lg:block '>
                  <img className=" lg:block sm:hidden  h-full w-full " src={signup} alt="" />
              </div>
 
-              <form onSubmit={handleSubmit} className=' '>
+              <form onSubmit={handleSubmit} className='md:w-full lg:w-auto'>
                  <h1 className=' text-2xl mb-1 sm:text-4xl font-bold sm:mb-3'>Login In And Explore more</h1>
                  <h3 className=' text-xl mb-[40px]'>Enter Your Details Below</h3>
                  <input onChange={handleCHange} value={val.email} name='email' className=' border-b-2 w-full py-2 outline-none' type="text" placeholder='Enter your Email address' />

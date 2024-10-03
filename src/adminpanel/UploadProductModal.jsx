@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {toggle_upload_modal} from'../store/products_slice';
 import { useDispatch } from 'react-redux';
 import { FaUpload } from "react-icons/fa6";
@@ -7,10 +7,11 @@ import uploadImage from '../helpers/uploadImage';
 import { MdDelete } from "react-icons/md";
 import productCategory from "../helpers/productCategory";
 import summaryApi from '../common';
-
+import { toast } from 'react-toastify';
+import contex from '../contex';
 
 function UploadProductModal() {
-
+   const {setTogleProductEdit ,toggleProductEdit,productDetail, setRefetchAllProducts} =  useContext(contex).editModal;   
    const dispatch = useDispatch();
    const [product, setProduct] = useState({
       productName: '',
@@ -21,6 +22,7 @@ function UploadProductModal() {
       buyingPrice :'',
       description: ''
    });
+
 
    const handleChange = (e) => {
       const {name , value} = e.target;
@@ -56,16 +58,18 @@ function UploadProductModal() {
 
        const dataResponse = await response.json();
        if(dataResponse.success) {
-         console.log(dataResponse.message);
-       }
-       if(dataResponse.error) {
-         console.log(dataResponse.message);
-       }
+         toast.success('Product uploaded successfully');
+         setRefetchAllProducts((prv)=>!prv);
+         dispatch(toggle_upload_modal(false))
+      }
+      if(dataResponse.error) {
+       toast.error('Product uploaded failed');
+      }
     }
 
 
   return (
-    <div className=' absolute h-full w-full  bg-black  bg-opacity-15 flex justify-center items-center'>
+    <div className=' z-50 absolute h-full w-full bg-black   bg-opacity-40 flex justify-center items-center'>
         <div className=' w-1/2 h-[450px] bg-white mb-12  p-2  overflow-y-scroll'> 
             <div className='flex justify-between mb-5'>
               <h1 className=' font-bold'>Upload Product</h1>

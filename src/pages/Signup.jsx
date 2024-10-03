@@ -85,12 +85,12 @@ function Signup() {
   return (
       <div className=' sm:px-[66px] px-3 w-full h-full my-4'>
 
-         <div className=' h-full w-full flex sm:justify-between items-center '>
-             <div className='h-full w-1/2 bg-red-400 sm:block hidden '>
+         <div className=' h-full w-full flex sm:justify-between lg:items-center '>
+             <div className='h-full w-1/2  hidden  md:hidden lg:block mx-10'>
                  <img className=" lg:block sm:hidden  h-full w-full " src={signup} alt="" />
              </div>
 
-              <form  onSubmit={handleSubmit} className=' sm:w-[500px] '>
+              <form  onSubmit={handleSubmit} className=' md:w-full lg:w-auto '>
                  
                  <div className='flex justify-center w-full mb-1 '>
                        <div className=' flex items-center justify-center relative w-14 h-14 text-6xl text-white bg-slate-400 rounded-full cursor-pointer '>

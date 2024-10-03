@@ -1,7 +1,10 @@
+import Categories from "../component/Categories";
 
 function Home(){
    return(
-      <div className="">Home</div>
+      <div className="">
+         <Categories/>
+      </div>
    )
 }
 

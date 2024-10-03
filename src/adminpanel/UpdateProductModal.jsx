@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {toggle_upload_modal} from'../store/products_slice';
 import { useDispatch } from 'react-redux';
 import { FaUpload } from "react-icons/fa6";
@@ -7,19 +7,22 @@ import uploadImage from '../helpers/uploadImage';
 import { MdDelete } from "react-icons/md";
 import productCategory from "../helpers/productCategory";
 import summaryApi from '../common';
-
+import { toast } from 'react-toastify';
+import contex from '../contex';
 
 function UpdateProductModal() {
-
+   const {setTogleProductEdit ,productDetail,setRefetchAllProducts } = useContext(contex).editModal;
+   console.log(productDetail);
    const dispatch = useDispatch();
    const [product, setProduct] = useState({
-      productName: '',
-      brandName: '',
-      category: '',
-      images: [],
-      sellingPrice : '',
-      buyingPrice :'',
-      description: ''
+      _id:productDetail._id,
+      productName: productDetail?.productName,
+      brandName: productDetail?.brandName,
+      category: productDetail?.category,
+      images: productDetail?.images,
+      sellingPrice : productDetail?.sellingPrice,
+      buyingPrice : productDetail?.buyingPrice,
+      description: productDetail?.description,
    });
 
    const handleChange = (e) => {
@@ -44,9 +47,9 @@ function UpdateProductModal() {
         setProduct((product)=>{return {...product, images }});
    }
 
-    const handleUpload = async (e) => {
-        const response = await fetch(summaryApi.uploadProduct.url,{
-          method: summaryApi.uploadProduct.method,
+    const handleUpdate = async (e) => {
+        const response = await fetch(summaryApi.updateProduct.url,{
+          method: summaryApi.updateProduct.method,
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
@@ -54,22 +57,27 @@ function UpdateProductModal() {
           body: JSON.stringify({...product }),
         });
 
+
        const dataResponse = await response.json();
+       
        if(dataResponse.success) {
-         console.log(dataResponse.message);
-       }
+          console.log(dataResponse)
+          toast.success('Product updated successfully');
+          setRefetchAllProducts((prv)=>!prv);
+          setTogleProductEdit(false);     
+        }
        if(dataResponse.error) {
-         console.log(dataResponse.message);
+        toast.error('Product updated failed');
        }
     }
 
 
   return (
-    <div className=' absolute h-full w-full  bg-black  bg-opacity-15 flex justify-center items-center'>
+    <div className='z-50 absolute h-full w-full  bg-black  bg-opacity-15 flex justify-center items-center'>
         <div className=' w-1/2 h-[450px] bg-white mb-12  p-2  overflow-y-scroll'> 
             <div className='flex justify-between mb-5'>
               <h1 className=' font-bold'>Update Product</h1>
-              <button className=' hover:bg-red-500 hover:text-white p-1 rounded-full' onClick={()=>dispatch(toggle_upload_modal(false))}>
+              <button className=' hover:bg-red-500 hover:text-white p-1 rounded-full' onClick={()=>setTogleProductEdit(false)}>
                  <ImCross />
               </button>
             </div>
@@ -81,6 +89,7 @@ function UpdateProductModal() {
                   type="text" 
                   name= 'productName'
                   onChange={handleChange}
+                  value={product.productName}
                />
             </div>
 
@@ -91,12 +100,13 @@ function UpdateProductModal() {
                   type="text" 
                   name = 'brandName'
                   onChange={handleChange}
+                  value={product.brandName}
                />
             </div>
 
             <div className=' flex flex-col mb-4'>
                <label htmlFor="category"> category</label>
-               <select className=' bg bg-slate-200 h-9 outline-none ' name="category" id=""  onChange={handleChange}>
+               <select className=' bg bg-slate-200 h-9 outline-none 'value={product.category} name="category" id=""  onChange={handleChange}>
                   <option value="Airpods">Select</option>
                   {
                      productCategory.map((item, index)=>(
@@ -117,6 +127,7 @@ function UpdateProductModal() {
                       type="file"
                       name = "productImage"
                       onChange={handleImage}
+
                    /> 
                </div>
             </div>
@@ -141,16 +152,18 @@ function UpdateProductModal() {
                   type="number" 
                   name = 'buyingPrice'
                   onChange={handleChange}
+                  value={product.buyingPrice}
                />
             </div>
 
             < div className=' flex flex-col mb-4'>
-               <label htmlFor="ProductName">Selling Price</label>
+               <label htmlFor="Selling Price">Selling Price</label>
                <input className=' h-9 px-2 outline-none w-full bg-slate-200' 
                   placeholder='Selling Price...' 
                   type="number" 
                   name = 'sellingPrice'
                   onChange={handleChange}
+                  value={product.sellingPrice}
                />
             </div>
 
@@ -163,7 +176,7 @@ function UpdateProductModal() {
             </div>
             
             <div className=' mt-4'>
-               <button onClick={handleUpload}  className=' w-full h-8 bg-red-600 text-white hover:bg-red-700'> Update Product </button>
+               <button onClick={handleUpdate}  className=' w-full h-8 bg-red-600 text-white hover:bg-red-700'> Update Product </button>
             </div>
         </div>
     </div>

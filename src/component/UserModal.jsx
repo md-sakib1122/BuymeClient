@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { LiaUserEditSolid } from "react-icons/lia";
@@ -12,10 +12,9 @@ import { setUserDetails } from '../store/user_Details_Slice';
 import role from '../common/role';
 
  function UserModal({user,setToggoleModal}) {
-
-  const dispatch = useDispatch();
+   const navigate = useNavigate();
+    const dispatch = useDispatch();
     const logout = async () => {
-     
           const response = await fetch(summaryApi.userLogout.url,{
             method: summaryApi.userLogout.method,
             credentials: 'include', 
@@ -25,7 +24,7 @@ import role from '../common/role';
           
           if(dataApi.success){
               toast.success(dataApi.message);
-             
+              navigate('/');
               dispatch(setUserDetails({}))
               setToggoleModal(false);
           }
@@ -37,7 +36,7 @@ import role from '../common/role';
     }
 
   return (    
-        <div className=' absolute bg-white w-52 -left-14  top-14  border  p-3 shadow-2xl rounded-md px-4'> {/*  user modal */}
+        <div className=' absolute bg-white w-52 -left-14  top-12  border  p-3 shadow-2xl rounded-md px-4'> {/*  user modal */}
             <div className=' flex gap-x-2 items-center'> 
                 {
                   user?.proPic ?( 
