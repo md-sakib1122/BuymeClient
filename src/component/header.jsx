@@ -47,7 +47,7 @@ function Header() {
                             {toggoleModal && <UserModal user={user} setToggoleModal={setToggoleModal}/>} {/* User modal setup */}
                         </div>
                     ) : (
-                        <Link to={"/login"} className='hover:border-b-2'>Login</Link>
+                        <Link to={"/login"} className=' font-serif py-3 hover:border-b-2 border-orange-400'>Login</Link>
                     )}
                     
                     <span className='text-3xl text-orange-400 hover:'>

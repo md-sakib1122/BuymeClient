@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SlEarphones } from "react-icons/sl";
 import productCategory from '../helpers/productCategory';
 import { FaCamera } from "react-icons/fa";
@@ -8,15 +8,17 @@ import { PiMouseMiddleClickLight } from "react-icons/pi";
 import { FiPrinter } from "react-icons/fi";
 import { GiProcessor } from "react-icons/gi";
 import { CgSmartHomeRefrigerator } from "react-icons/cg";
+import { BsFillArrowUpSquareFill } from "react-icons/bs";
 
-function Categories() {
+function Categories({setShowCategoryList}) {
  
-    
+   
 
   return ( 
-    <div className=' shadow-xl  w-52'>
+    <div className=' z-20 bg-white absolute lg:static lg:mt-3 md:mt-6 md:static w-52 shadow-xl'>
         <div className=' flex items-center gap-2 font-bold h-9 bg-orange-400 w-52 px-4'>
-            <div className=' h-4 w-4  bg-black '></div>
+             <div className='hidden lg:block md:block h-4  w-4 bg-black'></div>
+            <div className=' block lg:hidden md:hidden' onClick={()=>setShowCategoryList(false)} > <BsFillArrowUpSquareFill /></div>
             <h1>CATEGORIES</h1>
         </div>
         {

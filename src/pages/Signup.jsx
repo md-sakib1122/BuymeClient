@@ -92,8 +92,8 @@ function Signup() {
 
               <form  onSubmit={handleSubmit} className=' md:w-full lg:w-auto '>
                  
-                 <div className='flex justify-center w-full mb-1 '>
-                       <div className=' flex items-center justify-center relative w-14 h-14 text-6xl text-white bg-slate-400 rounded-full cursor-pointer '>
+                 <div className=' flex justify-center w-full mb-1 '>
+                       <div className=' text-white overflow-hidden border-2  flex items-center justify-center relative w-14 h-14 text-6xl  bg-slate-400 rounded-full cursor-pointer '>
                           <input onChange={handleProPic}  className=' absolute opacity-0 w-full h-full ' type="file" />
                          {
                           val.proPic.length > 0 ? ( <img src={val.proPic} alt="Profile" className="w-full h-full rounded-full object-cover" />)
@@ -101,7 +101,7 @@ function Signup() {
                          } 
                        </div>
                  </div>
-                 <h1 className='text-xl  mb-1 sm:text-2xl font-bold sm:mb-3'>Signup And Explore more</h1>
+                 <h1 className='text-xl  mb-1 sm:text-2xl font-bold sm:mb-3'> <span className=' text-orange-500'>Signup And</span> Explore more </h1>
                  <input onChange={handleCHange} value={val.name} name='name' className=' mb-[10px] border-b-2 w-full py-2 outline-none' type="text" placeholder='Enter your name' />
                  <input onChange={handleCHange} value={val.email} name='email' className=' border-b-2 w-full py-2 outline-none' type="text" placeholder='Enter your Email address' />
                  <input onChange={handleCHange} name='password' value={val.password} className=' border-b-2 w-full my-[10px] py-2 outline-none' type="text" placeholder='Enter your password' />
@@ -112,7 +112,7 @@ function Signup() {
                      <p className=' text-red-600 font-bold cursor-pointer'>Forger password?</p>
                  </div>
                   
-                 <p className=' py-4'>Already Have An Account? <Link to = {"/login"} className=' text-red-600 font-bold'>Login</Link></p>
+                 <p className='  py-4'>Already Have An Account? <Link to = {"/login"} className=' text-orange-600 font-bold'>Login</Link></p>
               </form>
          </div>
           
