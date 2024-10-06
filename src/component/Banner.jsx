@@ -40,7 +40,7 @@ function Banner() {
      const interval = setInterval(() => {
            setChangeBanner((prv)=>(prv+1)); 
           setChangeBanner((prv)=>(prv % 5)); 
-        },2000)
+        },3000)
  
         return ()=> clearInterval(interval);
     },[])
@@ -65,7 +65,7 @@ function Banner() {
           {
           desktopImages.map((img, ind)=>{
               return (
-                  <div style={{transform: `translateX(-${changeBanner*100}%)`}} key={ind} className=" transition-all min-w-full h-full  bg-green-300">
+                  <div style={{transform: `translateX(-${changeBanner*100}%) `}} key={ind} className=" transition-transform  ease-in-out duration-500 min-w-full h-full  bg-green-300">
                   <img className=" w-full h-full" src={img} alt="" />
                   </div>
               )
@@ -86,6 +86,7 @@ function Banner() {
        <div onClick={previousSlide} className= ' transition-all hover:bg-orange-400 hover:text-white cursor-pointer text-xl bg-white shadow-lg p-2 rounded-full right-1 absolute z-10 top-1/2 -translate-y-1/2'>
           <FaChevronRight />
        </div>
+        
     </div>
   )
 }

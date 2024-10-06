@@ -22,4 +22,8 @@
     .boxShadow {
         box-shadow: 4px 4px 6px rgba(0,0,0,0.7);
     }
+
+    .scrollbar-none::-webkit-scrollbar {
+     display: none;
+    }
   }

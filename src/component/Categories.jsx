@@ -9,13 +9,13 @@ import { FiPrinter } from "react-icons/fi";
 import { GiProcessor } from "react-icons/gi";
 import { CgSmartHomeRefrigerator } from "react-icons/cg";
 import { BsFillArrowUpSquareFill } from "react-icons/bs";
-
-function Categories({setShowCategoryList}) {
+import { Link } from 'react-router-dom';
+function Categories({setShowCategoryList,showCategoryList}) {
  
    
 
   return ( 
-    <div className=' z-20 bg-white absolute lg:static lg:mt-3 md:mt-6 md:static w-52 shadow-xl'>
+    <div className={`md:translate-y-0 transform  ${showCategoryList?'-translate-y-[00px]':'-translate-y-[500px]'} transition-transform duration-500 ease-out z-20 bg-white absolute lg:static lg:mt-3 md:mt-3 md:static w-52 shadow-xl`}>
         <div className=' flex items-center gap-2 font-bold h-9 bg-orange-400 w-52 px-4'>
              <div className='hidden lg:block md:block h-4  w-4 bg-black'></div>
             <div className=' block lg:hidden md:hidden' onClick={()=>setShowCategoryList(false)} > <BsFillArrowUpSquareFill /></div>
@@ -23,12 +23,12 @@ function Categories({setShowCategoryList}) {
         </div>
         {
           productCategory.map(item => (
-            <div className='flex items-center gap-3 px-4 w-full border-b py-1 cursor-pointer hover:bg-orange-200' key={item.id}>
+            <Link to ={'category-product/'+item.value} className='flex items-center gap-3 px-4 w-full border-b py-1 cursor-pointer hover:bg-orange-200' key={item.id}>
                 <span className='font-bold'>
                   {item.icon}
                 </span>
                <h2>{item.label}</h2>
-            </div>
+            </Link>
            ))
          }
     </div>

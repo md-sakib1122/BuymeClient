@@ -58,24 +58,24 @@ import role from '../common/role';
             </div>
             {
               role.admin == user.role && ( 
-              <div className='flex  gap-2 items-center mt-2 hover:bg-slate-200  p-2 cursor-pointer'>
+              <div className='flex  gap-2 hover:text-orange-500 items-center mt-2 hover:bg-orange-200  p-2 cursor-pointer'>
                 <GrUserAdmin />
-                <Link onClick={()=>setToggoleModal(false)} to={"/admin-panel"}>Admin Panel</Link>
+                <Link className=' text-black' onClick={()=>setToggoleModal(false)} to={"/admin-panel"}>Admin Panel</Link>
               </div>
               )
             }
            
-            <div className='flex  gap-2 items-center  hover:bg-slate-200  p-2 cursor-pointer'>
+            <div className=' hover:text-orange-500  hover:bg-orange-200 flex  gap-2 items-center   p-2 cursor-pointer'>
               <MdOutlineRemoveRedEye />
-              <Link to={'/show-profile'}> ShowProfile</Link>
+              <Link className=' text-black' to={'/show-profile'}> ShowProfile</Link>
             </div>
-            <div className='flex  gap-2 items-center  hover:bg-slate-200  p-2 cursor-pointer'>
+            <div className='flex  gap-2 items-center  hover:text-orange-500  hover:bg-orange-200   p-2 cursor-pointer'>
               <LiaUserEditSolid />
-              <button>Edit Profile</button>
+              <button className=' text-black'>Edit Profile</button>
             </div>
-            <div className='flex  gap-2 items-center  hover:bg-slate-200  p-2 cursor-pointer'>
+            <div className='flex  gap-2 items-center hover:text-orange-500  hover:bg-orange-200   p-2 cursor-pointer'>
               <IoLogOutOutline />
-              <button onClick={()=>logout()}>Sign out</button>
+              <button className=' text-black' onClick={()=>logout()}>Sign out</button>
             </div>
       </div>
   )

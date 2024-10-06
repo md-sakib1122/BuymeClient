@@ -5,7 +5,7 @@ import {
     Link,
   } from "react-router-dom";
    import App from "../App";
-   import Home from "../pages/home";
+   import Home from "../pages/Home";
    import Login from "../pages/Login";
    import Signup from "../pages/Signup";
    import AdminPanel from "../pages/AdminPanel";
@@ -13,6 +13,7 @@ import {
    import AdminTest from "../adminpanel/AdminTest";
    import Users from "../adminpanel/Users";
    import Allproducts from "../adminpanel/Allproducts";
+   import CategoryProduct from "../pages/CategoryProduct";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -29,6 +30,10 @@ import {
          {
            path:"signup",
            element: <Signup/>
+         },
+         {
+           path:"category-product/:categoryName",
+           element: <CategoryProduct/>
          },
 
          {

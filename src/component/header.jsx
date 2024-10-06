@@ -12,6 +12,12 @@ function Header() {
     const user = useSelector(state => state.user.user);
     const [toggoleModal, setToggoleModal] = useState(false);
 
+    const [activeItem, setActiveItem] = useState('Home');
+
+    const handleClick = (title) => {
+      setActiveItem(title);
+    };
+
     return (
         <header className=' h-12 border-b  bg-white fixed z-50 w-full  top-0'>
             <div className=' px-8 mx-auto w-full bg-white flex justify-between items-center h-full'>
@@ -22,9 +28,9 @@ function Header() {
                 </div>
                 
                 <div className='hidden lg:flex gap-9 justify-between h-full items-center ml-auto lg:ml-0'>
-                    <Link to={"/"} className='hidden  font-serif lg:inline-block hover:border-b-2 hover:border-orange-400 py-3 hover:text-orange-400'>Home</Link>
-                    <button className=' font-serif  hover:border-b-2 hover:border-orange-400 py-3 hover:text-orange-400'>Contact</button>
-                    <button className=' font-serif hover:border-b-2 hover:border-orange-400 py-3 hover:text-orange-400'>About</button>
+                    <NavItem  title = {"Home"} path={"/"} active={activeItem === "Home"} handleClick={handleClick} />
+                    <NavItem title = {"Contact"} path={"#"} active={activeItem === "Contact"} handleClick={handleClick} />
+                    <NavItem title = {"About"} path={"#"} active={activeItem === "About"} handleClick={handleClick}/>
 
                     <div className=' border border-orange-400 rounded-r-lg h-[34px] w-[400px] bg-white lg:flex items-center justify-between hidden'>
                         <input type="text" className='h-full pl-[20px] w-full text-sm outline-none bg-white' placeholder='What are you looking for?' />
@@ -47,7 +53,7 @@ function Header() {
                             {toggoleModal && <UserModal user={user} setToggoleModal={setToggoleModal}/>} {/* User modal setup */}
                         </div>
                     ) : (
-                        <Link to={"/login"} className=' font-serif py-3 hover:border-b-2 border-orange-400'>Login</Link>
+                        <NavItem title = {"Login"} path={"login"} active={activeItem === "Login"} handleClick={handleClick}/>
                     )}
                     
                     <span className='text-3xl text-orange-400 hover:'>
@@ -62,5 +68,18 @@ function Header() {
         </header>
     );
 }
+
+
+//nav item 
+
+const NavItem = ({ title , path , active , handleClick}) => {
+    return (
+      <Link onClick={()=>handleClick(title)} to={path} className=" hover:text-orange-400 py-3 relative group">
+        <span className="relative z-10">{title}</span>
+        <span className={`absolute left-0 bottom-0 h-[3px] w-full bg-orange-600 transform   ${active ? 'scale-x-100' : 'scale-x-0'} transition-transform duration-300 ease-in-out group-hover:scale-x-100 `}/>
+      </Link>
+    );
+  };
+  
 
 export default Header;
