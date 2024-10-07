@@ -2,7 +2,8 @@ import React, { useState,useEffect, useRef } from 'react'
 import FetchCategoryProducts from '../helpers/FetchCategoryProducts'
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-
+import {Link} from 'react-router-dom'
+import AddToCart from '../helpers/AddToCart';
 
 function HorizontalCardProduct({ category, heading}) {
   const [data, setData] = useState([]);
@@ -65,16 +66,16 @@ function HorizontalCardProduct({ category, heading}) {
        ):(
         <div className=' my-6 container  m-auto '>
             <h2 className=' font-semibold text-2xl  mb-3' >{heading}</h2>
-            <div className=' bg-slate-100 relative'>
-                <button onClick={scrollLeft}  className='hidden md:block z-50 bg-green-400 p-1 rounded-full left-1 top-1/2 -translate-y-1/2  absolute'> <FaChevronLeft /> </button>
+            <div className=' relative'>
+                <button onClick={scrollLeft}  className='hidden md:block  z-20 bg-green-400 p-1 rounded-full left-1 top-1/2 -translate-y-1/2  absolute'> <FaChevronLeft /> </button>
                 <div className=' px-1 py-2 relative flex scrollbar-none w-full overflow-x-scroll scroll-smooth ' ref={scrollRef}>
                     
                     {
                     data.map((product, ind) => {
                         return (
-                            <div className= '  bg-white mr-6 rounded-sm   shadow-lg flex gap-5 min-w-[280px]  max-w-[280px] md:max-w-[300px] md:min-w-[300px] ' key={product.id}> {/* or ind if no unique id available */}
+                            <Link to={'product-details/'+product._id} className= '  bg-white mr-6 rounded-sm   shadow-lg flex gap-5 min-w-[280px]  max-w-[280px] md:max-w-[300px] md:min-w-[300px] ' key={product.id}> {/* or ind if no unique id available */}
                                 <div className='min-w-[120px] max-w-[120px] bg-slate-200 '>
-                                    <img className=' object-contain mix-blend-multiply' src={product.images[0]} alt={product.productName} />
+                                    <img className='  transition-all hover:scale-75 object-contain mix-blend-multiply' src={product.images[0]} alt={product.productName} />
                                 </div>
                                 <div className=' flex-1'>
                                     <h3 className=' mb-1 font-semibold text-ellipsis line-clamp-1'>{product.productName}</h3>
@@ -83,9 +84,9 @@ function HorizontalCardProduct({ category, heading}) {
                                         <p className=' text-orange-600 font-semibold'>${product.buyingPrice}</p>
                                         <p className=' line-through text-slate-500'>${product.sellingPrice}</p>
                                     </div>
-                                    <button className=' bg-orange-500 text-white rounded-full p-[2px]  w-32'>Add to Cart</button>
+                                    <button onClick={AddToCart}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-32'>Add to Cart</button>
                                 </div> 
-                            </div>
+                            </Link>
                         );
                     })
                     }

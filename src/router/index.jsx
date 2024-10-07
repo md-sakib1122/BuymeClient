@@ -14,6 +14,8 @@ import {
    import Users from "../adminpanel/Users";
    import Allproducts from "../adminpanel/Allproducts";
    import CategoryProduct from "../pages/CategoryProduct";
+   import ProductDetails from "../pages/ProductDetails";
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -34,6 +36,10 @@ import {
          {
            path:"category-product/:categoryName",
            element: <CategoryProduct/>
+         },
+         {
+           path:"product-details/:productId",
+           element: <ProductDetails/>
          },
 
          {

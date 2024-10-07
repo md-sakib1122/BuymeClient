@@ -28,20 +28,20 @@ function Home(){
                    <div className=" px-12 hidden md:flex justify-between bg-slate-200 h-full ">
                        <div className=" h-full flex flex-col justify-center items-center max-w-60">
                           <p className=" mb-3 text-orange-400 text-5xl"><LiaShippingFastSolid /></p>
-                          <h3 className=" font-bold ">Free Shiping Order</h3>
-                          <p className=" text-slate-500">Fast And Secure</p>
+                          <h3 className=" font-bold ">Free Shiping </h3>
+                          <p className=" text-slate-500">Shiping On Orders over $99</p>
                        </div>
                        
                        <div className=" h-full flex flex-col justify-center items-center max-w-60">
                           <p className=" mb-3 text-orange-400 text-5xl"><TiGift /></p>
                           <h3 className=" font-bold ">Special Gift Card</h3>
-                          <p className=" text-slate-500">Fast And Secure</p>
+                          <p className=" text-slate-500">Buy One Get One</p>
                        </div>
 
                        <div className=" h-full flex flex-col justify-center items-center max-w-60">
                           <p className=" mb-3 text-orange-400 text-5xl"><GiReturnArrow /></p>
                           <h3 className=" font-bold ">Return And Refund</h3>
-                          <p className=" text-slate-500">Fast And Secure</p>
+                          <p className=" text-slate-500">30 Days Money Back Gurantee</p>
                        </div>
 
                        <div className=" h-full flex flex-col justify-center items-center max-w-60">

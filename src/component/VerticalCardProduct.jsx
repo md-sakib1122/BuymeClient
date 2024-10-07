@@ -2,7 +2,8 @@ import React, { useState,useEffect, useRef } from 'react'
 import FetchCategoryProducts from '../helpers/FetchCategoryProducts'
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-
+import { Link } from 'react-router-dom';
+import AddToCart from '../helpers/AddToCart';
 
 function VerticalCardProduct({ category, heading}) {
   const [data, setData] = useState([]);
@@ -66,13 +67,13 @@ function VerticalCardProduct({ category, heading}) {
         <div className=' container my-6  m-auto '>
             <h2 className=' font-semibold text-2xl ' >{heading}</h2>
             <div className=' relative'>
-                <button onClick={scrollLeft}  className='hidden md:block z-50 bg-green-400 p-1 rounded-full left-1 top-1/2 -translate-y-1/2  absolute'> <FaChevronLeft /> </button>
+                <button onClick={scrollLeft}  className='hidden md:block z-20 bg-green-400 p-1 rounded-full left-1 top-1/2 -translate-y-1/2  absolute'> <FaChevronLeft /> </button>
                 <div className=' px-1 py-3   relative flex scrollbar-none w-full overflow-x-scroll scroll-smooth ' ref={scrollRef}>
                     
                     {
                     data.map((product, ind) => {
                         return (
-                            <div className= ' shadow-lg  mr-6 rounded-sm bg-white    min-w-[280px]  max-w-[280px] md:max-w-[320px] md:min-w-[320px] ' key={product.id}> {/* or ind if no unique id available */}
+                            <Link to = {'product-details/'+product._id} className= ' shadow-lg  mr-6 rounded-sm bg-white    min-w-[280px]  max-w-[280px] md:max-w-[320px] md:min-w-[320px] ' key={product.id}> {/* or ind if no unique id available */}
                                 <div className=' p-3 h-48  mix-blend-multiply flex justify-center bg-slate-200 '>
                                     <img className=' transition-all hover:scale-90 h-full w-full mix-blend-multiply object-contain' src={product.images[0]} alt={product.productName} />
                                 </div>
@@ -83,9 +84,9 @@ function VerticalCardProduct({ category, heading}) {
                                         <p className=' text-orange-600 font-semibold'>${product.buyingPrice}</p>
                                         <p className=' line-through text-slate-500'>${product.sellingPrice}</p>
                                     </div>
-                                    <button className=' bg-orange-500 text-white rounded-full p-[2px]  w-full'>Add to Cart</button>
+                                    <button onClick={AddToCart}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-full'>Add to Cart</button>
                                 </div> 
-                            </div>
+                            </Link>
                         );
                     })
                     }

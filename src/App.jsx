@@ -53,7 +53,10 @@ function App() {
                <ToastContainer />
                <div className=' pt-12 h-screen'>
                   <Header/>
-                        <Outlet/>
+                   <div className=' sm: px-4 md:px-0'>
+                     <Outlet/>
+                   </div>
+                      
                   <Footer/>
                </div>
                

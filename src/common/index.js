@@ -39,6 +39,10 @@ const summaryApi = {
     fetchCategoryProducts : {
         url : `${backendDomain}/api/category-products`,
         method: 'post',
+    },
+    fetchProductDetails : {
+        url : `${backendDomain}/api/fetch-products`,
+        method: 'post',
     }
     
 
