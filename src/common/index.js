@@ -1,3 +1,4 @@
+
 const backendDomain = "http://localhost:8080"
 const summaryApi = {
     signUp : {
@@ -42,6 +43,10 @@ const summaryApi = {
     },
     fetchProductDetails : {
         url : `${backendDomain}/api/fetch-products`,
+        method: 'post',
+    },
+    addToCart : {
+        url : `${backendDomain}/api/addTo-cart`,
         method: 'post',
     }
     

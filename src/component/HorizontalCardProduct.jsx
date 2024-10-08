@@ -27,6 +27,12 @@ function HorizontalCardProduct({ category, heading}) {
   const scrollRight= ()=>{
     scrollRef.current.scrollLeft -= 337;
   }
+
+  const handleAddToCart = async (e,productId)=> {
+     e.preventDefault();
+     await  AddToCart(productId);
+  }
+
   return (
     <>
      {
@@ -73,7 +79,7 @@ function HorizontalCardProduct({ category, heading}) {
                     {
                     data.map((product, ind) => {
                         return (
-                            <Link to={'product-details/'+product._id} className= '  bg-white mr-6 rounded-sm   shadow-lg flex gap-5 min-w-[280px]  max-w-[280px] md:max-w-[300px] md:min-w-[300px] ' key={product.id}> {/* or ind if no unique id available */}
+                            <Link to={'product-details/'+product._id} className= '  bg-white mr-6 rounded-sm   shadow-lg flex gap-5 min-w-[280px]  max-w-[280px] md:max-w-[300px] md:min-w-[300px] ' key={ind}> {/* or ind if no unique id available */}
                                 <div className='min-w-[120px] max-w-[120px] bg-slate-200 '>
                                     <img className='  transition-all hover:scale-75 object-contain mix-blend-multiply' src={product.images[0]} alt={product.productName} />
                                 </div>
@@ -84,7 +90,7 @@ function HorizontalCardProduct({ category, heading}) {
                                         <p className=' text-orange-600 font-semibold'>${product.buyingPrice}</p>
                                         <p className=' line-through text-slate-500'>${product.sellingPrice}</p>
                                     </div>
-                                    <button onClick={AddToCart}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-32'>Add to Cart</button>
+                                    <button onClick={(e)=>handleAddToCart(e,product._id)}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-32'>Add To Cart</button>
                                 </div> 
                             </Link>
                         );

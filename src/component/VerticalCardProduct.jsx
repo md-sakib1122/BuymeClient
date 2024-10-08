@@ -27,6 +27,13 @@ function VerticalCardProduct({ category, heading}) {
   const scrollRight= ()=>{
     scrollRef.current.scrollLeft -= 337;
   }
+
+  const handleAddToCart = async (e,productId)=> {
+    e.preventDefault();
+    await  AddToCart(productId);
+ }
+
+
   return (
     <>
      {
@@ -84,7 +91,7 @@ function VerticalCardProduct({ category, heading}) {
                                         <p className=' text-orange-600 font-semibold'>${product.buyingPrice}</p>
                                         <p className=' line-through text-slate-500'>${product.sellingPrice}</p>
                                     </div>
-                                    <button onClick={AddToCart}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-full'>Add to Cart</button>
+                                    <button onClick={(e)=>handleAddToCart(e,product._id)}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-full'>Add to Cart</button>
                                 </div> 
                             </Link>
                         );
