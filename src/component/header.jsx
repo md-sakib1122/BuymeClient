@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { IoIosSearch } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import logo from '../assest/logo.jpg';
 import { useSelector } from 'react-redux';
 import UserModal from './userModal';
-
+import contex from '../contex';
 function Header() {
     const user = useSelector(state => state.user.user);
     const [toggoleModal, setToggoleModal] = useState(false);
-
+    const {cartCount,} = useContext(contex);
     const [activeItem, setActiveItem] = useState('Home');
 
     const handleClick = (title) => {
@@ -61,7 +61,7 @@ function Header() {
                     </span>
                     <span className='text-3xl text-orange-400 relative'>
                       <IoCartOutline />
-                       <p className=' absolute text-xs px-1 -top-1 -right-1 text-white  bg-orange-400 rounded-full'>0</p>
+                       <p className=' absolute text-xs px-1 -top-1 -right-1 text-white  bg-orange-400 rounded-full'>{cartCount}</p>
                     </span>
                 </div>
             </div>

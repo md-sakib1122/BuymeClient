@@ -1,16 +1,19 @@
-import React, { useState,useEffect, useRef } from 'react'
+import React, { useState,useEffect, useRef, useContext } from 'react'
 import FetchCategoryProducts from '../helpers/FetchCategoryProducts'
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import AddToCart from '../helpers/AddToCart';
-
+import contex from '../contex';
+import { useNavigate } from 'react-router-dom';
 function VerticalCardProduct({ category, heading}) {
   const [data, setData] = useState([]);
+  const {fetchCartProductCount,} = useContext(contex);  
   const [loading, setloading] = useState(true);
   const loadingList = new Array(13).fill(null);
+  const [loadingCart, setLoadingCart] = useState('');  // Change from single boolean to object
   const scrollRef = useRef();
-
+  const navigate = useNavigate();
   const getProducts = async () => {
     setloading(true);
     const response = await FetchCategoryProducts(category);
@@ -30,7 +33,10 @@ function VerticalCardProduct({ category, heading}) {
 
   const handleAddToCart = async (e,productId)=> {
     e.preventDefault();
-    await  AddToCart(productId);
+    setLoadingCart(productId);
+    await  AddToCart(productId,navigate);
+    setLoadingCart('');
+    await fetchCartProductCount();
  }
 
 
@@ -80,7 +86,7 @@ function VerticalCardProduct({ category, heading}) {
                     {
                     data.map((product, ind) => {
                         return (
-                            <Link to = {'product-details/'+product._id} className= ' shadow-lg  mr-6 rounded-sm bg-white    min-w-[280px]  max-w-[280px] md:max-w-[320px] md:min-w-[320px] ' key={product.id}> {/* or ind if no unique id available */}
+                            <Link to = {'product-details/'+product._id} className= ' shadow-lg  mr-6 rounded-sm bg-white    min-w-full  max-w-full md:max-w-[300px] md:min-w-[300px] ' key={ind}> {/* or ind if no unique id available */}
                                 <div className=' p-3 h-48  mix-blend-multiply flex justify-center bg-slate-200 '>
                                     <img className=' transition-all hover:scale-90 h-full w-full mix-blend-multiply object-contain' src={product.images[0]} alt={product.productName} />
                                 </div>
@@ -91,7 +97,7 @@ function VerticalCardProduct({ category, heading}) {
                                         <p className=' text-orange-600 font-semibold'>${product.buyingPrice}</p>
                                         <p className=' line-through text-slate-500'>${product.sellingPrice}</p>
                                     </div>
-                                    <button onClick={(e)=>handleAddToCart(e,product._id)}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-full'>Add to Cart</button>
+                                    <button onClick={(e)=>handleAddToCart(e,product._id)}  className=' bg-orange-500 text-white rounded-full p-[2px]  w-full'>{loadingCart==product._id?"Adding..." : "Add to Cart"}</button>
                                 </div> 
                             </Link>
                         );

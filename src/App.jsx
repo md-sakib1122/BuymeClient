@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from './component/header'
 import Footer from './component/Footer'
@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux'
 
 function App() {
      const dispatch = useDispatch();
-
+     const [cartCount, setCartCount] = useState();
     const fetchUserDetails = async () => {
        try {
            const response = await fetch(summaryApi.userDetails.url,{
@@ -41,14 +41,31 @@ function App() {
          }
     }
 
+    const fetchCartProductCount = async () => {
+        const response  = await fetch(summaryApi.countCartProducts.url,{
+           method: summaryApi.countCartProducts.method,
+           credentials:'include',
+           headers:{
+             'Content-Type': 'application/json',
+           },
+         })
+
+         const dataApi = await response.json();
+         if(dataApi.success){
+           setCartCount(dataApi?.data?.count);
+         }
+    }
+
+
     useEffect(()=>{
       fetchUserDetails();
+      fetchCartProductCount();
     },[])
 
     const  editModal  = productEditModal();
      return (
         <>
-           <contex.Provider value={{ fetchUserDetails ,editModal}}>
+           <contex.Provider value={{ fetchUserDetails ,editModal , cartCount ,fetchCartProductCount  }}>
         
                <ToastContainer />
                <div className=' pt-12 h-screen'>

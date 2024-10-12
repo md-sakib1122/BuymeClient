@@ -2,7 +2,7 @@ import React from 'react'
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
 
-async function  AddToCart(productId) {
+async function  AddToCart(productId,navigate) {
 
      const response = await fetch(summaryApi.addToCart.url,{
           method:  summaryApi.addToCart.method,
@@ -18,7 +18,12 @@ async function  AddToCart(productId) {
           toast.success(dataresponse.message);
      }
      if(dataresponse.error){
+          console.log(dataresponse.data);
+          if(dataresponse.data.user === 'notloggedin'){
+               navigate('/login');
+          }
           toast.error(dataresponse.message);
+         
      }
 }   
 
