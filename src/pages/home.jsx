@@ -11,6 +11,7 @@ import VerticalCardProduct from "../component/VerticalCardProduct";
 
 function Home(){
    const [showCategoryList, setShowCategoryList] = useState(false);
+   const x=0;
    
    return(
        <div className="  "> 
