@@ -1,5 +1,6 @@
 
-const backendDomain = "http://localhost:8080"
+const backendDomain  = "https://buyme-server.vercel.app";
+
 const summaryApi = {
     signUp : {
         url: `${backendDomain}/api/signup`,
