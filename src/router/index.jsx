@@ -5,18 +5,18 @@ import {
     Link,
   } from "react-router-dom";
    import App from "../App";
-   import Home from "../pages/Home";
-   import Login from "../pages/Login";
-   import Signup from "../pages/Signup";
-   import AdminPanel from "../pages/AdminPanel";
-   import AdminHome from "../adminpanel/AdminHome";
-   import AdminTest from "../adminpanel/AdminTest";
-   import Users from "../adminpanel/Users";
-   import Allproducts from "../adminpanel/Allproducts";
-   import CategoryProduct from "../pages/CategoryProduct";
-   import ProductDetails from "../pages/ProductDetails";
-   import ProductCart from "../pages/ProductCart";
-   import SearchProduct from "../pages/SearchProduct";
+   import Home from "../pages/Home.jsx";
+   import Login from "../pages/Login.jsx";
+   import Signup from "../pages/Signup.jsx";
+   import AdminPanel from "../pages/AdminPanel.jsx";
+   import AdminHome from "../adminpanel/AdminHome.jsx";
+   import AdminTest from "../adminpanel/AdminTest.jsx";
+   import Users from "../adminpanel/Users.jsx";
+   import Allproducts from "../adminpanel/Allproducts.jsx";
+   import CategoryProduct from "../pages/CategoryProduct.jsx";
+   import ProductDetails from "../pages/ProductDetails.jsx";
+   import ProductCart from "../pages/ProductCart.jsx";
+   import SearchProduct from "../pages/SearchProduct.jsx";
   const router = createBrowserRouter([
     {
       path: "/",
