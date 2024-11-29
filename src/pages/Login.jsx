@@ -21,7 +21,7 @@ function Login() {
  
    }
 
-    const {fetchUserDetails} = useContext(contex);
+    const {fetchUserDetails, fetchCartProductCount} = useContext(contex);
 
    const handleSubmit= async (e)=>{
     e.preventDefault();
@@ -39,6 +39,7 @@ function Login() {
     if(data.success) {
       toast.success(data.message);
       fetchUserDetails();
+      fetchCartProductCount();
       navigate('/');
     }
     if(data.error) {

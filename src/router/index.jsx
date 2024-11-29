@@ -15,7 +15,8 @@ import {
    import Allproducts from "../adminpanel/Allproducts";
    import CategoryProduct from "../pages/CategoryProduct";
    import ProductDetails from "../pages/ProductDetails";
-
+   import ProductCart from "../pages/ProductCart";
+   import SearchProduct from "../pages/SearchProduct";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -41,7 +42,15 @@ import {
            path:"product-details/:productId",
            element: <ProductDetails/>
          },
-
+         {
+          path:'search',
+          element: <SearchProduct/>
+         },
+         {
+           path:"product-cart",
+           element: <ProductCart/>
+         },
+       
          {
           path:'admin-panel',
           element:<AdminPanel/>,

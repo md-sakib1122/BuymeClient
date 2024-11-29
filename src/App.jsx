@@ -65,7 +65,7 @@ function App() {
     const  editModal  = productEditModal();
      return (
         <>
-           <contex.Provider value={{ fetchUserDetails ,editModal , cartCount ,fetchCartProductCount  }}>
+           <contex.Provider value={{ fetchUserDetails, cartCount,editModal ,fetchCartProductCount  }}>
         
                <ToastContainer />
                <div className=' pt-12 h-screen'>

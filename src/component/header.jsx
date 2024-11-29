@@ -3,7 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assest/logo.jpg';
 import { useSelector } from 'react-redux';
 import UserModal from './userModal';
@@ -11,12 +11,20 @@ import contex from '../contex';
 function Header() {
     const user = useSelector(state => state.user.user);
     const [toggoleModal, setToggoleModal] = useState(false);
-    const {cartCount,} = useContext(contex);
+    const {cartCount} = useContext(contex);
     const [activeItem, setActiveItem] = useState('Home');
-
+    const navigate = useNavigate();
     const handleClick = (title) => {
       setActiveItem(title);
     };
+    
+   const handleSearch = (e) => {
+     let value = e.target.value;
+
+     if(value){
+        navigate(`/search?q=${value}`);
+     }
+   }
 
     return (
         <header className=' h-12 border-b  bg-white fixed z-50 w-full  top-0'>
@@ -33,7 +41,7 @@ function Header() {
                     <NavItem title = {"About"} path={"#"} active={activeItem === "About"} handleClick={handleClick}/>
 
                     <div className=' border border-orange-400 rounded-r-lg h-[34px] w-[400px] bg-white lg:flex items-center justify-between hidden'>
-                        <input type="text" className='h-full pl-[20px] w-full text-sm outline-none bg-white' placeholder='What are you looking for?' />
+                        <input onChange={handleSearch} type="text" className='h-full pl-[20px] w-full text-sm outline-none bg-white' placeholder='What are you looking for?' />
                         <button className='text-2xl bg-orange-400 h-full w-12 text-center text-white pl-2 rounded-r-md'><IoIosSearch /></button>
                     </div>
                 </div>
@@ -56,13 +64,13 @@ function Header() {
                         <NavItem title = {"Login"} path={"login"} active={activeItem === "Login"} handleClick={handleClick}/>
                     )}
                     
-                    <span className='text-3xl text-orange-400 hover:'>
+                    <Link to ={"#"} className=' cursor-pointer text-3xl text-orange-400 hover:'>
                         <CiHeart />
-                    </span>
-                    <span className='text-3xl text-orange-400 relative'>
+                    </Link >
+                    <Link to ={'product-cart'} className=' cursor-pointer text-3xl text-orange-400 relative'>
                       <IoCartOutline />
                        <p className=' absolute text-xs px-1 -top-1 -right-1 text-white  bg-orange-400 rounded-full'>{cartCount}</p>
-                    </span>
+                    </Link>
                 </div>
             </div>
         </header>

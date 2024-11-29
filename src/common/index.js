@@ -52,9 +52,15 @@ const summaryApi = {
     countCartProducts : {
         url : `${backendDomain}/api/cart-product-count`,
         method: 'get',
+    },
+    fetchAllCartProducts : {
+        url : `${backendDomain}/api/all-cart-products`,
+        method: 'get',
+    },
+    deleteCartProduct : {
+        url:`${backendDomain}/api/delete-cart`,
+        method: 'delete',
     }
-    
-
 
 }
 

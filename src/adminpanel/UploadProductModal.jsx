@@ -78,7 +78,7 @@ function UploadProductModal() {
               </button>
             </div>
 
-            < div className=' flex flex-col mb-4'>
+            < div className=' flex flex-col mb-4 '>
                <label htmlFor="ProductName">Product Name</label>
                <input className=' h-9 px-2 outline-none w-full bg-slate-200' 
                   placeholder='enter product name' 
