@@ -6,7 +6,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assest/logo.jpg';
 import { useSelector } from 'react-redux';
-import UserModal from './userModal';
+import UserModal from './UserModal';
 import contex from '../contex';
 function Header() {
     const user = useSelector(state => state.user.user);
