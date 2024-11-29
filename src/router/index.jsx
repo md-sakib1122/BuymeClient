@@ -5,9 +5,9 @@ import {
     Link,
   } from "react-router-dom";
    import App from "../App";
-   import Home from "../pages/Home.jsx";
    import Login from "../pages/Login.jsx";
    import Signup from "../pages/Signup.jsx";
+   import Home from "../pages/Home.jsx";
    import AdminPanel from "../pages/AdminPanel.jsx";
    import AdminHome from "../adminpanel/AdminHome.jsx";
    import AdminTest from "../adminpanel/AdminTest.jsx";
