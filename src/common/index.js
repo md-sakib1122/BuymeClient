@@ -1,5 +1,5 @@
 
-const backendDomain  = "https://buyme-server.vercel.app";
+const backendDomain  = import.meta.env.VITE_backendURL;     //"https://buyme-server.vercel.app";
 
 const summaryApi = {
     signUp : {
