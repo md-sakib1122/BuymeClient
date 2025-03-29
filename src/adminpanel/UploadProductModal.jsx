@@ -23,6 +23,8 @@ function UploadProductModal() {
       description: ''
    });
 
+   console.log(product);
+
 
    const handleChange = (e) => {
       const {name , value} = e.target;

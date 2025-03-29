@@ -42,20 +42,29 @@ function App() {
     }
 
     const fetchCartProductCount = async () => {
-        const response  = await fetch(summaryApi.countCartProducts.url,{
-           method: summaryApi.countCartProducts.method,
-           credentials:'include',
-           headers:{
-             'Content-Type': 'application/json',
-           },
-         })
+       
+      
+      const response = await fetch(summaryApi.fetchAllCartProducts.url,{
+        method: summaryApi.fetchAllCartProducts.method,
+        credentials:'include',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+       } );
+       const dataResponse = await response.json();
+       if(dataResponse.success){
+         const total = dataResponse.data.reduce((sum,el)=>{
+            return sum+el.quantity;
+          },0)  
+          setCartCount(total);
+       }
+       if(dataResponse.error){
+        console.log(dataResponse.message);
+       }
 
-         const dataApi = await response.json();
-         if(dataApi.success){
-           setCartCount(dataApi?.data?.count);
-         }
+
     }
-
+ 
 
     useEffect(()=>{
       fetchUserDetails();
