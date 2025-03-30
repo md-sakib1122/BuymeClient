@@ -57,9 +57,11 @@ function Home(){
         </div>
 
         <HorizontalCardProduct category ={"airpodes"} heading={"New Arrival"} />
+        <HorizontalCardProduct category ={"watches"} heading={"Best Product"} />
         <VerticalCardProduct category ={"earphones"} heading={"Top Earphones"} />
-        <VerticalCardProduct category={'mobiles' }  heading='Recomended'/>
+        <VerticalCardProduct category={'mobiles' }  heading='Recommended'/>
         <VerticalCardProduct category={'camera' }  heading='Camera'/>
+
 
      </div>
    )
