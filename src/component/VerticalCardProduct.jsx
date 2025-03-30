@@ -12,7 +12,6 @@ function VerticalCardProduct({ category, heading }) {
   const [loadingCart, setLoadingCart] = useState({});
   const scrollRef = useRef();
   const navigate = useNavigate();
-
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);

@@ -57,8 +57,10 @@ function App() {
             return sum+el.quantity;
           },0)  
           setCartCount(total);
+
        }
        if(dataResponse.error){
+        setCartCount(0);
         console.log(dataResponse.message);
        }
 

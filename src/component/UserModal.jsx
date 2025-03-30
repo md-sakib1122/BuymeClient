@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
@@ -10,8 +10,10 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from '../store/user_Details_Slice';
 import role from '../common/role';
+import contex from '../contex';
 
  function UserModal({user,setToggoleModal}) {
+    const { cartCount, fetchCartProductCount } = useContext(contex);
    const navigate = useNavigate();
     const dispatch = useDispatch();
     const logout = async () => {
@@ -27,6 +29,7 @@ import role from '../common/role';
               navigate('/');
               dispatch(setUserDetails({}))
               setToggoleModal(false);
+             await fetchCartProductCount();
           }
 
           if(dataApi.error){

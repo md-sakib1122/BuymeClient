@@ -3,7 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assest/logo.jpg';
 import { useSelector } from 'react-redux';
 import UserModal from './UserModal';
@@ -14,15 +14,21 @@ function Header() {
     const {cartCount} = useContext(contex);
     const [activeItem, setActiveItem] = useState('Home');
     const navigate = useNavigate();
+    const searchInput = useLocation();
+    const [searchText, setSearchText] = useState(searchInput?.search.split('=')[1]);
     const handleClick = (title) => {
       setActiveItem(title);
     };
     
    const handleSearch = (e) => {
      let value = e.target.value;
+     setSearchText(value)
 
      if(value){
         navigate(`/search?q=${value}`);
+     }
+     else{
+
      }
    }
 
@@ -41,7 +47,7 @@ function Header() {
                     <NavItem title = {"About"} path={"#"} active={activeItem === "About"} handleClick={handleClick}/>
 
                     <div className=' border border-orange-400 rounded-r-lg h-[34px] w-[400px] bg-white lg:flex items-center justify-between hidden'>
-                        <input onChange={handleSearch} type="text" className='h-full pl-[20px] w-full text-sm outline-none bg-white' placeholder='What are you looking for?' />
+                        <input onChange={handleSearch} type="text" className="h-full pl-[20px] w-full text-sm outline-none bg-white  border-[1px] border-orange-500 focus:border-[1.5px] focus:border-orange-500 focus:shadow-[0_0_9px_2px] focus:shadow-orange-500/50 transition-all duration-300" placeholder='What are you looking for?' value={searchText} />
                         <button className='text-2xl bg-orange-400 h-full w-12 text-center text-white pl-2 rounded-r-md'><IoIosSearch /></button>
                     </div>
                 </div>
