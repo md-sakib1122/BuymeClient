@@ -88,7 +88,12 @@ function ProductCart() {
       <div className='flex flex-col gap-2 w-full md:w-1/2'>
         {isLoading ? (
           // 🔹 Skeleton Loader
-          <div className="animate-pulse bg-slate-200 h-32 w-full rounded-lg"></div>
+          <>
+          {
+            cartProducts.map(()=> <div className="animate-pulse bg-slate-200 h-32 w-full rounded-lg"></div>)
+          }
+            
+          </>
         ) : cartProducts.length > 0 ? (
           cartProducts.map((cart, ind) => (
             <div key={ind} className='bg-white border flex shadow-md'>
