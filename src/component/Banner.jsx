@@ -1,6 +1,8 @@
 import banner1 from '../assest/banner/banner1.png';
 import banner2 from '../assest/banner/banner2.png';
 import banner3 from '../assest/banner/img1.webp';
+import bannerNew from '../assest/banner/bannerNew2.jpg';
+
 import banner3_mobile from '../assest/banner/img1_mobile.jpg';
 import banner4 from '../assest/banner/img2.webp';
 import banner4_mobile from '../assest/banner/img2_mobile.webp';
@@ -23,7 +25,7 @@ function Banner() {
     const desktopImages = [
        banner7,
        banner4,
-       banner2,
+       bannerNew,
        banner5,
        banner6,
     ];
@@ -66,7 +68,7 @@ function Banner() {
           desktopImages.map((img, ind)=>{
               return (
                   <div style={{transform: `translateX(-${changeBanner*100}%) `}} key={ind} className=" transition-transform  ease-in-out duration-500 min-w-full h-full  bg-green-300">
-                  <img className=" w-full h-full" src={img} alt="" />
+                  <img className=" w-full h-full object-cover" src={img} alt="" />
                   </div>
               )
           })
@@ -77,7 +79,7 @@ function Banner() {
           mobileImages.map((img, ind)=>{
               return (
                   <div style={{transform: `translateX(-${changeBanner*100}%)`}} key={ind} className=" transition-all min-w-full h-full  bg-green-300">
-                  <img className=" w-full h-full" src={img} alt="" />
+                  <img className=" w-full h-full " src={img} alt="" />
                   </div>
               )
           })

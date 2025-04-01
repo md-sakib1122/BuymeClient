@@ -49,7 +49,7 @@ function HorizontalCardProduct({ category, heading }) {
         {/* Left Scroll Button */}
         <button
           onClick={scrollLeft}
-          className='hidden md:block z-20 bg-green-400 p-1 rounded-full left-1 top-1/2 -translate-y-1/2 absolute'
+          className='hidden md:block z-20 p-1 bg-slate-400 text-slate-800 hover:scale-[1.1] rounded-full left-1 top-1/2 -translate-y-1/2 absolute'
         >
           <FaChevronLeft />
         </button>
@@ -117,7 +117,7 @@ function HorizontalCardProduct({ category, heading }) {
         {/* Right Scroll Button */}
         <button
           onClick={scrollRight}
-          className='hidden md:block bg-lime-400 rounded-full p-1 right-1 top-1/2 -translate-y-1/2 absolute'
+          className='hidden md:block bg-slate-400 text-slate-800 hover:scale-[1.1] rounded-full p-1 right-1 top-1/2 -translate-y-1/2 absolute'
         >
           <FaChevronRight />
         </button>
@@ -126,4 +126,4 @@ function HorizontalCardProduct({ category, heading }) {
   );
 }
 
-export default HorizontalCardProduct;
+export default HorizontalCardProduct; 

@@ -39,7 +39,7 @@ function Users() {
 
 
   return (
-    <div className='flex flex-col bg-white p-6  col-span-3 w-full h-full relative'>
+    <div className=' h-[calc(100vh-90px)] overflow-y-scroll  flex flex-col bg-white p-6  col-span-3 w-full  relative'>
         {
          isEditModalOpen? <EdituserModal 
                              setIsEditModalOpen={ setIsEditModalOpen } 
@@ -59,11 +59,11 @@ function Users() {
            allUsers.length>0 ? (allUsers.map((user,ind)=>{
               return(
                 <div key={ind} className='grid  grid-cols-12'>
-                    <div className='border h-9 flex justify-center items-center'>{ind+1}</div>
-                    <div className='col-span-3 border h-9 flex justify-center items-center'>{user.name}</div>
-                    <div className='col-span-4 border h-9 flex justify-center items-center'>{user.email}</div>
-                    <div className='border h-9 flex justify-center items-center'>{user.role}</div>
-                    <div className='border h-9 col-span-2 flex justify-center items-center'>{ readableDate(user.createdAt)}</div>
+                    <div className='border text-sm lg:text-[1rem] h-9 flex justify-center items-center'>{ind+1}</div>
+                    <div className='col-span-3 text-sm lg:text-[1rem] border h-9 flex justify-center items-center'>{user.name}</div>
+                    <div className='col-span-4 border h-9 flex text-sm lg:text-[1rem] justify-center items-center'>{user.email}</div>
+                    <div className='border text-sm lg:text-[1rem] h-9 flex justify-center items-center'>{user.role}</div>
+                    <div className='border text-sm lg:text-[1rem] h-9 col-span-2 flex justify-center items-center'>{ readableDate(user.createdAt)}</div>
                     <div className='border h-9 flex justify-center items-center'>
                         <button onClick={()=>handleUser(user)}  className='p-1 hover:bg-black hover:text-white bg-slate-200 rounded-full'> <MdModeEditOutline /> </button>
                     </div>

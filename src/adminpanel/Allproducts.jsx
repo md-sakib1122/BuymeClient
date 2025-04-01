@@ -38,12 +38,12 @@ function Allproducts() {
      },[RefetchAllProducts]);
 
   return (
-    <div className='bg-slate-200 col-span-3  border-l border-white'>
-        <div className=' h-[50px] bg-white flex justify-between items-center p-2 mb-[1px] lg:mt-0  md:mt-[1px] sm:mt[1px] '>
+    <div className='  bg-slate-200 col-span-3  border-l border-white z-0 '>
+        <div className=' bg-white h-[50px] flex justify-between items-center p-2 mb-[1px] lg:mt-0  md:mt-[1px] sm:mt[1px] '>
              <h1 className=' font-bold'>All Products</h1>
              <button onClick={handleUploadProduct} className=' transition-all p-2 border-[2px] text-orange-400 border-orange-400 hover:text-white hover:bg-orange-400 rounded-full'>Upload Product</button>
         </div>
-         <div className=' h-[400px] py-1 flex bg-slate-200   flex-wrap  gap-2 px-1  overflow-y-scroll items-start'>
+         <div className='h-[calc(100vh-140px)] py-1 flex bg-slate-200   flex-wrap  gap-2 px-1  overflow-y-scroll items-start z-10'>
             {allProducts.map((product,index) => (
             <div key={index} className='shadow-lg  bg-white w-28 md:w-24 lg:w-24 p-2  relative  rounded-sm '>
                   <img className=' w-28 h-28 md:w-24 lg:w-24 lg:h-24 object-contain ' src={product.images[0]} alt="" />

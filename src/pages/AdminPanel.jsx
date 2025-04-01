@@ -15,7 +15,7 @@ function AdminPanel() {
   const toggle_upload_modal = useSelector(state => state.products.products.toggle_upload_modal);
   return (
     
-    <div className=' lg:grid-container gap-[2px] bg-slate-200 md:grid-cols-1 sm:grid-cols-1 relative  '>
+    <div className=' max-h-[calc(100vh-47px)] lg:grid-container gap-[2px] bg-slate-200 md:grid-cols-1 sm:grid-cols-1 relative  '>
         {toggle_upload_modal&&<UploadProductModal fetchAllProducts ={fetchAllProducts} />}
         {toggleProductEdit && <UpdateProductModal/> } 
          <Sidebar sidebar={sidebar} setSidebar={setSidebar} />

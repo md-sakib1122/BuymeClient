@@ -23,7 +23,7 @@ function Categories({setShowCategoryList,showCategoryList}) {
         </div>
         {
           productCategory.map(item => (
-            <Link to ={'category-product/'+item.value} className='flex items-center gap-3 px-4 w-full border-b py-1 cursor-pointer hover:bg-orange-200' key={item.id}>
+            <Link to ={'/category-product/'+item.value} className='flex items-center gap-3 px-4 w-full border-b py-1 cursor-pointer hover:bg-orange-200' key={item.id}>
                 <span className='font-bold'>
                   {item.icon}
                 </span>

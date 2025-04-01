@@ -42,7 +42,7 @@ function VerticalCardProduct({ category, heading }) {
     <div className='container my-6 m-auto'>
       <h2 className='font-semibold text-2xl mb-3'>{heading}</h2>
       <div className='relative'>
-        <button onClick={scrollLeft} className='hidden md:block z-20 bg-green-400 p-1 rounded-full left-1 top-1/2 -translate-y-1/2 absolute'>
+        <button onClick={scrollLeft} className='hidden md:block z-20   bg-slate-400 text-slate-800 hover:scale-[1.1]  p-1 rounded-full left-1 top-1/2 -translate-y-1/2 absolute'>
           <FaChevronLeft />
         </button>
         <div className='px-1 py-3 relative flex scrollbar-none w-full overflow-x-scroll scroll-smooth' ref={scrollRef}>
@@ -82,7 +82,7 @@ function VerticalCardProduct({ category, heading }) {
               ))
             : <p className='text-center w-full text-gray-500'>No products available</p>}
         </div>
-        <button onClick={scrollRight} className='hidden md:block bg-lime-400 rounded-full p-1 right-1 top-1/2 -translate-y-1/2 absolute'>
+        <button onClick={scrollRight} className='hidden md:block bg-slate-300 text-slate-800 hover:scale-[1.1] rounded-full p-1 right-1 top-1/2 -translate-y-1/2 absolute'>
           <FaChevronRight />
         </button>
       </div>
