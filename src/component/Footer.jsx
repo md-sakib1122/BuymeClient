@@ -37,7 +37,7 @@ function Footer() {
       
       {/* Social & Copyright */}
       <div className="mt-6 border-t border-orange-300 pt-4 flex flex-col md:flex-row justify-between items-center">
-        <p className="text-sm text-gray-800 ">&copy; {new Date().getFullYear()} ShopEasy. All rights reserved.</p>
+        <p className="text-sm text-gray-800 ">&copy; {new Date().getFullYear()} BuyMe. All rights reserved.</p>
         <div className="flex space-x-4 mt-2 md:mt-0 text-gray-800 ">
           <a href="https://www.facebook.com/sakib.hossain.954999/" target='_blank' className="hover:scale-[0.9] transition-all  delay-100 text-3xl"><FaFacebook /> </a>
           <a href="https://x.com/?lang=en" className=" text-3xl hover:scale-[0.9] transition-all  delay-100" target='_blank'><FaTwitter /></a>
