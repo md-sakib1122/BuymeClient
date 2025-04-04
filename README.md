@@ -4,6 +4,10 @@ This is the frontend of **BuyMe**, a full-stack e-commerce platform that deliver
 
 🔗 **Live Website:** [BuyMe](https://buyme-client-dg4x.vercel.app)
 
+## 🔐 Admin Credentials
+- **Email**: mdaskib5566@gmail.com
+- **Password**: 1234
+
 ## ✨ Features
 
 - 🔐 JWT-based Authentication
