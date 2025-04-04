@@ -29,9 +29,9 @@ This is the frontend of **BuyMe**, a full-stack e-commerce platform that deliver
 - Node.js (v14 or later)
 
 ### Installation
-.env {
-  VITE_backendURL = http://localhost:3000
-}
+ .env {
+   VITE_backendURL = http://localhost:3000
+ }
 
 
 ```bash
