@@ -34,7 +34,7 @@ This is the frontend of **BuyMe**, a full-stack e-commerce platform that deliver
 ### Installation
 ```bash
 git clone https://github.com/your-username/buyme.git
-Goto the directory(cd buymeclient)
+cd buymeclient
 npm install
 ```
 
