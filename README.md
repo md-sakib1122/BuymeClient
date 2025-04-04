@@ -22,22 +22,31 @@ This is the frontend of **BuyMe**, a full-stack e-commerce platform that deliver
 - Tailwind CSS
 - JavaScript
 
+
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or later)
+- Node.js
+- MongoDB Atlas
+- Cloudinary Account
 
 ### Installation
- .env {
-   VITE_backendURL = http://localhost:3000
- }
-
-
 ```bash
-git clone https://github.com/md-sakib1122/BuymeClient.git
+git clone https://github.com/your-username/buyme.git
+Goto the directory(cd buymeclient)
 npm install
+```
+
+### Configure Environment Variables
+```Create a .env file inside the backend/ directory and add:
+VITE_backendURL = http://localhost:3000
+```
+
+### Run Project
+```bash
 npm run dev
+
 
 
 
